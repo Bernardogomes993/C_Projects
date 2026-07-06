@@ -19,8 +19,9 @@ the credentials in a `txt file`.
 1. **Dinamic Data Structures**: Use of `struct` to modulate the aspects of each account.
    Use of `removeEnter()` function to eliminate the `enter` strokes , and the use of `fgets` to
    read the inputs from the user
-2.**Inverter cryptography**: The use of functions `cesarCypher()` and `uncipher()` guarantees that
+   
+2. **Inverter cryptography**: The use of functions `cesarCypher()` and `uncipher()` guarantees that
    the integrity of the system.
-3.**Data persistence**:
+3. **Data persistence**:
      * **`loadData()`**: Loads the data to the array when the program begins.
      * **`saveCrdential()`**: Cleans the file and rewrites the file with the data. 
