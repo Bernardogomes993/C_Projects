@@ -12,7 +12,7 @@ the credentials in a `txt file`.
   the user quits the program.
 
 * **Cryptography**: The passwords are never stored in plein text in the file, the algorithm
-  aplies a `Cesar Cypher (+3)` in the moment that the data are written in the file.
+  aplies a `Cesar Cypher (+3)` in the moment that the data is written in the file.
 
 ## Code architecture
 
@@ -20,7 +20,7 @@ the credentials in a `txt file`.
    Use of `removeEnter()` function to eliminate the `enter` strokes , and the use of `fgets` to
    read the inputs from the user
    
-2. **Inverter cryptography**: The use of functions `cesarCypher()` and `uncipher()` guarantees that
+2. **Inverter cryptography**: The use of functions `cesarCypher()` and `uncipher()` guarantees 
    the integrity of the system.
 3. **Data persistence**:
      * **`loadData()`**: Loads the data to the array when the program begins.
