@@ -24,4 +24,4 @@ the credentials in a `txt file`.
    the integrity of the system.
 3. **Data persistence**:
      * **`loadData()`**: Loads the data to the array when the program begins.
-     * **`saveCrdential()`**: Cleans the file and rewrites the file with the data. 
+     * **`saveCredential()`**: Cleans the file and rewrites the file with the data. 
