@@ -11,6 +11,8 @@ the RAM allows.
 contains structural metadata (sizes) in order to restore the pointers and the structs.
 **Remove of a song**: The algorithm manipulates the pointers in a way that any song can be removed without
 breaking the list.(`free()`).
+**Remove of a playlist**: The user can remove a given playlist from the program, the algorithm removes
+first the list of songs by using a `recursive` function and then removes the playlist that the user introduced.
 
 ## Memory Architecture
 This project uses the `malloc()` function to allocate memory dynamically, the struct is divided by:
