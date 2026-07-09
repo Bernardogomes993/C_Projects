@@ -241,6 +241,54 @@ void removeSong(pointerPlaylist plst){
 
 }
 
+void recursiveRemove(pointerMusic *plst){
+    if(*plst == NULL){
+        return;
+    }
+
+    pointerMusic nextNode = (*plst) -> next;
+    
+    free(*plst);
+
+    recursiveRemove(&nextNode);
+}
+
+void removePlaylist(pointerPlaylist *plst){
+    char playlistNameAux[50];
+    printf("What is the name of the playlist that you want to remove: \n");
+    fgets(playlistNameAux , 50 , stdin);
+    removeEnter(playlistNameAux);
+
+    pointerPlaylist playlistAuxPointer1 = *plst;
+    pointerPlaylist playlistAuxPointer2 = NULL;
+
+    while(playlistAuxPointer1 != NULL && strcasecmp(playlistAuxPointer1 ->playlistName , playlistNameAux) != 0){
+        playlistAuxPointer2 = playlistAuxPointer1;
+        playlistAuxPointer1 = playlistAuxPointer1 ->nextPlayList;
+    }
+
+    if(playlistAuxPointer1 == NULL){
+        printf("Could not find the playlist \n");
+        return;
+    }
+
+    recursiveRemove(&(playlistAuxPointer1 ->firstSong));
+
+    if(playlistAuxPointer2 == NULL){
+        *plst = playlistAuxPointer1 ->nextPlayList;
+        free(playlistAuxPointer1);
+        
+
+    }
+
+    else{
+        playlistAuxPointer2 -> nextPlayList = playlistAuxPointer1 ->nextPlayList;
+        free(playlistAuxPointer1);
+        
+    }
+
+}
+
 int countPlaylist(pointerPlaylist plst){
     pointerPlaylist pAux = plst;
     int counter = 0;
@@ -368,7 +416,7 @@ int main(){
     pointerPlaylist myPlayList = emptyPlaylist();
     loadData(&myPlayList);
     do{
-        printf("Select this options: 1 - Create Playlist , 2 - Add song to a playlist , 3 - Remove a song from a playlist , 4 - Show Playlists , 5 - Quit\n");
+        printf("Select this options: 1 - Create Playlist , 2 - Add song to a playlist , 3 - Remove a song from a playlist , 4 - Show Playlists, 5 - Remove Playlist , 6 - Quit\n");
         scanf("%d" , &userOption);
         getchar();
 
@@ -389,11 +437,14 @@ int main(){
         case 4:
             showPlaylist(myPlayList);
             break;
+        case 5:
+            removePlaylist(&myPlayList);
+            break;
         default:
             break;
         }
 
-    }while(userOption != 5);
+    }while(userOption != 6);
    
     storeData(myPlayList);
 
